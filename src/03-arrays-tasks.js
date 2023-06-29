@@ -281,8 +281,14 @@ function getSecondItems(arr) {
  *  [ 'a', 'b', 'c', null ] => [ 'a', 'b','b', 'c','c','c',  null,null,null,null ]
  *  [ 1,2,3,4,5 ] => [ 1, 2,2, 3,3,3, 4,4,4,4, 5,5,5,5,5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  let res = [];
+  arr.map((elem, index) => {
+    const newArr = Array(index + 1).fill(elem);
+    res = [...res, ...newArr];
+    return res;
+  });
+  return res;
 }
 
 
@@ -335,8 +341,17 @@ function getPositivesCount(arr) {
  *   [ 'nine','eight','nine','eight'] => [ 'eight','eight','nine','nine']
  *   [ 'one','one','one','zero' ]     => [ 'zero','one','one','one' ]
  */
-function sortDigitNamesByNumericOrder(/* arr */) {
-  throw new Error('Not implemented');
+function sortDigitNamesByNumericOrder(arr) {
+  const newArr = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
+  const res = arr.map((elem) => {
+    const val = newArr.indexOf(elem);
+    return val;
+  });
+  const filtred = res.sort((a, b) => a - b);
+  return filtred.map((element) => {
+    const val = newArr[element];
+    return val;
+  });
 }
 
 /**
@@ -351,8 +366,8 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   [ -1, 1, -1, 1 ]      => 0
  *   [ 1, 10, 100, 1000 ]  => 1111
  */
-function getItemsSum(/* arr */) {
-  throw new Error('Not implemented');
+function getItemsSum(arr) {
+  return arr.reduce((sum, elem) => sum + elem, 0);
 }
 
 /**
